@@ -1,0 +1,47 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Vehicles</h2>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Year (Builder)</th>
+            <th>Gas</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var vehicle in Model.Vehicles)
+    {
+        <tr>
+            <td>@vehicle.Brand</td>
+            <td>@vehicle.Model</td>
+            <td>@vehicle.Color</td>
+            <td>@vehicle.Year</td>
+            <td>@vehicle.Gas</td>
+
+            <td>
+                <a href="/Home/AddGas?id=@vehicle.ID">Llenar tanque</a> |
+                <a href="/Home/StartEngine?id=@vehicle.ID">Encender</a> |
+                <a href="/Home/StopEngine?id=@vehicle.ID">Apagar</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<hr />
+
+<h3>Agregar vehículos (Factory Method)</h3>
+
+<a href="/Home/AddMustang">Add Mustang</a> |
+<a href="/Home/AddExplorer">Add Explorer</a> |
+<a href="/Home/AddEscape">Add Escape</a>
